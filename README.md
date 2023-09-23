@@ -8,21 +8,23 @@ The Contact App is an Android application designed to manage and display a list 
 
 - Dependency Injection: Koin is used for dependency injection, making it easy to manage and provide dependencies throughout the app.
 
-- Material Design: The app adheres to Google's Material Design guidelines for a modern and visually appealing user interface.
+- KotlinStateFlow: The app leverages Kotlin's `MutableStateFlow` for managing the UI state, enabling real-time updates and data flow between the ViewModel and the UI.
+
+- Navigation Component: The Android Navigation Component is used for fragment transactions, ensuring a smooth and consistent navigation experience.
 
 - Room Database: Room is used for local data storage, allowing the app to cache and retrieve contact information efficiently.
+
+- Master-Detail UI: The app features a master-detail user interface, making it suitable for both smartphones and tablets. Users can view a list of contacts and select individual contacts to view detailed information.
+
+- Swipe-to-Delete feature, allowing users to easily delete individual contacts from their list.
+
+- Material Design: The app adheres to Google's Material Design guidelines for a modern and visually appealing user interface.
 
 - Retrofit: Retrofit is used for making network requests to retrieve contact data from a remote API.
 
 - Launcher Icon: The app features a custom launcher icon to enhance its branding and visual appeal.
 
 - Splash Theme: A splash screen with a custom theme is displayed during app launch to provide a polished user experience.
-
-- Master-Detail UI: The app features a master-detail user interface, making it suitable for both smartphones and tablets. Users can view a list of contacts and select individual contacts to view detailed information.
-
-- Navigation Component: The Android Navigation Component is used for fragment transactions, ensuring a smooth and consistent navigation experience.
-
-- Swipe-to-Delete feature, allowing users to easily delete individual contacts from their list.
 
 ## Screenshots
 
@@ -35,9 +37,7 @@ The Contact App is an Android application designed to manage and display a list 
 To get started with the Contact App, follow these steps:
 
 1. Clone the repository to your local machine.
-
 2. Open the project in Android Studio.
-
 3. Build and run the app on an Android emulator or physical device.
 
 ## Dependencies
@@ -48,6 +48,10 @@ To get started with the Contact App, follow these steps:
 - Retrofit for network requests
 - Android Navigation Component for navigation
 - Material Components for Material Design elements
+
+## Unit Testing
+
+The Contact App includes unit tests to ensure the correctness of its features. You can find these tests in the `app/src/test` directory. The tests cover various aspects of the app's functionality, including ViewModel logic, data retrieval, and UI interactions.
 
 ## Contributing
 
