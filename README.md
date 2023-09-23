@@ -26,17 +26,9 @@ The Contact App is an Android application designed to manage and display a list 
 
 ## Screenshots
 
-![Screenshot_20230923_215652](https://github.com/ravinada/contact/assets/49580276/31feed9f-ce35-4e31-b740-345ff14f500a)
-![Screenshot_20230923_215706](https://github.com/ravinada/contact/assets/49580276/1ad92d74-c0e9-4639-be17-487f89e8f8b8)
-![Screenshot_20230923_220010](https://github.com/ravinada/contact/assets/49580276/90f8395d-34fb-4cfb-8923-e76b7346de55)
-![Screenshot_20230923_215717](https://github.com/ravinada/contact/assets/49580276/f0f7d931-418a-4b5b-af74-bdc57ae2cb5e)
-![Screenshot_20230923_215730](https://github.com/ravinada/contact/assets/49580276/26f12098-d8f0-4e6a-8f61-684bfb8dcdcb)
-![Screenshot_20230923_215742](https://github.com/ravinada/contact/assets/49580276/26e81496-40b8-49fa-b4e8-df8fc0b4445e)
-![Screenshot_20230923_215752](https://github.com/ravinada/contact/assets/49580276/a83d83f7-e966-4f67-811c-289aa0bf1d6e)
-![Screenshot_20230923_220142](https://github.com/ravinada/contact/assets/49580276/1498fd94-964d-456a-8896-8e79a1d469ae)
-![Screenshot_20230923_220157](https://github.com/ravinada/contact/assets/49580276/2449553c-92f4-49ed-81aa-e93c0278a57f)
-![Screenshot_20230923_220216](https://github.com/ravinada/contact/assets/49580276/0adb787d-ec75-46f9-bf8b-aa294ab4cdf1)
+![1](https://github.com/ravinada/contact/assets/49580276/e69d4d43-cf21-483a-bfd8-88b617229616)  ![2](https://github.com/ravinada/contact/assets/49580276/6993cbe1-8fb7-468c-9c1a-2a03545012ad)  ![3](https://github.com/ravinada/contact/assets/49580276/350780c4-7a4a-41ec-b777-d3c93825bbbf)  ![4](https://github.com/ravinada/contact/assets/49580276/e83287d5-2368-43fc-84eb-ef44a3c0e426)  ![5](https://github.com/ravinada/contact/assets/49580276/006fd522-ebf3-4da0-b2a1-2b20f7726811)  ![6](https://github.com/ravinada/contact/assets/49580276/b273e35b-c568-4a01-af4a-7596f0d9e731) ![7](https://github.com/ravinada/contact/assets/49580276/3eec64ec-0c2b-40ee-884f-f2c8048fdb0b)  
 
+![8](https://github.com/ravinada/contact/assets/49580276/d2849d56-3487-4176-a82b-fdcf176efe60) ![9](https://github.com/ravinada/contact/assets/49580276/d332984e-df4f-45af-8cec-42ca9a31c10e)  ![10](https://github.com/ravinada/contact/assets/49580276/09dc9d6b-7b9b-4272-a681-4afb8b9d5de6)
 
 ## Getting Started
 
