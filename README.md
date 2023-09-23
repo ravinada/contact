@@ -48,6 +48,7 @@ To get started with the Contact App, follow these steps:
 - Retrofit for network requests
 - Android Navigation Component for navigation
 - Material Components for Material Design elements
+- Unit Testing Dependencies like JUnit, Mockito, Kotlinx Coroutines Test, AndroidX Test, AndroidX Core Testing
 
 ## Unit Testing
 
