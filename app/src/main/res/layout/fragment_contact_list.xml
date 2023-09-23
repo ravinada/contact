@@ -13,9 +13,9 @@
         android:paddingTop="16dp"
         android:paddingBottom="?actionBarSize"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_contact"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_contact" />
 
     <ProgressBar
         android:id="@+id/progressBar"

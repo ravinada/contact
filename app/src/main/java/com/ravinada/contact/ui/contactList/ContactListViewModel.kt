@@ -77,4 +77,11 @@ class ContactListViewModel(private val apiRepository: ApiRepository) : ViewModel
             }
         }
     }
+
+    fun deleteContact(contact: Contact) {
+        viewModelScope.launch {
+            apiRepository.deleteContact(contact)
+        }
+        fetchContactList()
+    }
 }
