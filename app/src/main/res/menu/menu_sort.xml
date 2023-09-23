@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_aToz"
+        android:title="@string/sort_by_a_z" />
+    <item
+        android:id="@+id/action_zToa"
+        android:title="@string/sort_by_z_a" />
+</menu>
