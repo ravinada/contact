@@ -1,5 +1,9 @@
 package com.ravinada.contact.ui.contactList
 
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,7 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.ravinada.contact.R
+import com.ravinada.contact.data.api.response.Contact
 import com.ravinada.contact.databinding.FragmentContactListBinding
 import com.ravinada.contact.ui.base.BaseFragment
 import com.ravinada.contact.ui.base.UiState
@@ -29,11 +38,11 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_main, menu)
+        inflater.inflate(R.menu.menu_master, menu)
         inflater.inflate(R.menu.menu_sort, menu)
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
-        searchView.queryHint = getString(R.string.searchContact_hint)
+        searchView.queryHint = getString(R.string.contactList_searchContact_hint)
         searchView.onActionViewExpanded()
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -75,6 +84,8 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
             rootContactList.addTapToDismissBehaviour()
             adapter = ContactListAdapter(itemDetailFragmentContainer)
             recyclerView.adapter = adapter
+            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+            itemTouchHelper.attachToRecyclerView(recyclerView)
         }
     }
 
@@ -95,6 +106,103 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
                     snackbar(binding.root, it.message.toString(), Toast.LENGTH_LONG)
                 }
             }
+        }
+    }
+
+    private fun showDeleteConfirmationDialog(contact: Contact, position: Int) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.deleteDialog_title))
+        builder.setMessage(getString(R.string.deleteDialog_subtitle))
+
+        builder.setPositiveButton(getString(R.string.deleteDialog_positive_button)) { _, _ ->
+            viewModel.deleteContact(contact)
+        }
+
+        builder.setNegativeButton(getString(R.string.deleteDialog_negative_button)) { _, _ ->
+            adapter.notifyItemChanged(position)
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+        0,
+        ItemTouchHelper.LEFT
+    ) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            // Not used for swipe-to-delete
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.layoutPosition
+
+            val itemList: List<Contact>? = when (val uiState = viewModel.uiState.value) {
+                is UiState.Success -> uiState.data
+                else -> null
+            }
+            val removedItem = itemList?.get(position)
+            if (removedItem != null) {
+                showDeleteConfirmationDialog(removedItem, position)
+            }
+        }
+
+        override fun onChildDraw(
+            c: Canvas,
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            dX: Float,
+            dY: Float,
+            actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+            if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                val itemView = viewHolder.itemView
+                val itemHeight = itemView.bottom - itemView.top
+
+                val isCanceled = dX == 0f && !isCurrentlyActive
+
+                if (isCanceled) {
+                    clearCanvas(c, itemView.right + dX, itemView.top.toFloat(), itemView.right.toFloat(), itemView.bottom.toFloat())
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    return
+                }
+
+                val background = ColorDrawable(Color.RED)
+                background.setBounds(
+                    itemView.right + dX.toInt(),
+                    itemView.top,
+                    itemView.right,
+                    itemView.bottom
+                )
+                background.draw(c)
+
+                val deleteIcon = ContextCompat.getDrawable(
+                    recyclerView.context,
+                    R.drawable.ic_delete
+                )
+                val iconWidth = deleteIcon?.intrinsicWidth ?: 0
+                val iconHeight = deleteIcon?.intrinsicHeight ?: 0
+                val iconMargin = (itemHeight - iconHeight) / 2
+                val iconLeft = itemView.right - iconMargin - iconWidth
+                val iconRight = itemView.right - iconMargin
+                val iconTop = itemView.top + (itemHeight - iconHeight) / 2
+                val iconBottom = iconTop + iconHeight
+
+                deleteIcon?.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                deleteIcon?.draw(c)
+            }
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+        }
+
+        private fun clearCanvas(c: Canvas, left: Float, top: Float, right: Float, bottom: Float) {
+            c.drawRect(left, top, right, bottom, Paint().apply { color = Color.WHITE })
         }
     }
 

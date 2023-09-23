@@ -17,8 +17,9 @@
             android:id="@+id/textInputLayout_fullName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,8 +27,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_fullName"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_fullName_hint"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -36,7 +37,8 @@
             android:id="@+id/textInputLayout_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +47,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_username"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_username_hint"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -55,8 +57,9 @@
             android:id="@+id/textInputLayout_phoneNumber"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_username">
@@ -64,8 +67,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_phoneNumber"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_phoneNumber_hint"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,8 +77,9 @@
             android:id="@+id/textInputLayout_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_phoneNumber">
@@ -83,8 +87,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_email"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_email_hint"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,7 +97,8 @@
             android:id="@+id/textInputLayout_address"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,8 +107,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_address"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_address_hint"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +117,8 @@
             android:id="@+id/textInputLayout_website"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"            android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,8 +127,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_website"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_website_hint"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -131,8 +137,9 @@
             android:id="@+id/textInputLayout_company"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="16dp"            android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_website">
@@ -140,8 +147,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_company"
                 android:layout_width="match_parent"
-                android:focusable="false"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="@string/contactDetail_company_hint"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>

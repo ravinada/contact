@@ -6,4 +6,8 @@ import kotlinx.coroutines.flow.Flow
 interface ApiRepository {
 
     fun getContactList(): Flow<List<Contact>>
+
+    suspend fun fetchContact()
+
+    suspend fun deleteContact(contact: Contact)
 }

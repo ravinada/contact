@@ -1,19 +1,22 @@
 package com.ravinada.contact.data.api.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "contact")
 @Parcelize
 data class Contact(
+    @field:Json(name = "id")
+    @PrimaryKey val id: Int,
     @field:Json(name = "address")
     val address: Address,
     @field:Json(name = "company")
     val company: Company,
     @field:Json(name = "email")
     val email: String,
-    @field:Json(name = "id")
-    val id: Int,
     @field:Json(name = "name")
     val name: String,
     @field:Json(name = "phone")
