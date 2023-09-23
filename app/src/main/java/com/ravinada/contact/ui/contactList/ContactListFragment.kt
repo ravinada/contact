@@ -24,6 +24,7 @@ import com.ravinada.contact.ui.base.BaseFragment
 import com.ravinada.contact.ui.base.UiState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
 class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentContactListBinding
@@ -90,7 +91,7 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
     }
 
     private fun setupObserver() {
-        viewModel.uiState.collectLatestRepeatOnStarted {
+        viewModel.observeUiState.collectLatestRepeatOnStarted {
             when (it) {
                 is UiState.Success -> {
                     binding.progressBar.visibility = View.GONE
@@ -142,7 +143,7 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val position = viewHolder.layoutPosition
 
-            val itemList: List<Contact>? = when (val uiState = viewModel.uiState.value) {
+            val itemList: List<Contact>? = when (val uiState = viewModel.observeUiState.value) {
                 is UiState.Success -> uiState.data
                 else -> null
             }

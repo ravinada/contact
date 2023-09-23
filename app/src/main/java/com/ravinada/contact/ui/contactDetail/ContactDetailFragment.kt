@@ -18,6 +18,7 @@ import com.ravinada.contact.ui.contactList.ContactListFragment.Companion.CONTACT
 import com.ravinada.contact.ui.contactList.ContactListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
 class ContactDetailFragment : BaseFragment<FragmentContactDetailBinding>() {
 
     private val viewModel: ContactListViewModel by viewModel()

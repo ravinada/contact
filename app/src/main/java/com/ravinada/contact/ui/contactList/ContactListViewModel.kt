@@ -12,10 +12,10 @@ import kotlinx.coroutines.launch
 
 class ContactListViewModel(private val apiRepository: ApiRepository) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState<List<Contact>>>(UiState.Loading)
-    private var _originalData: List<Contact> = emptyList()
+    val uiState = MutableStateFlow<UiState<List<Contact>>>(UiState.Loading)
+    private var contactList: List<Contact> = emptyList()
 
-    val uiState: StateFlow<UiState<List<Contact>>> = _uiState
+    val observeUiState: StateFlow<UiState<List<Contact>>> = uiState
 
     init {
         fetchContactList()
@@ -24,13 +24,13 @@ class ContactListViewModel(private val apiRepository: ApiRepository) : ViewModel
     fun sortContactListInAtoZ() {
         viewModelScope.launch {
             try {
-                val currentUiState = uiState.value
+                val currentUiState = observeUiState.value
                 if (currentUiState is UiState.Success) {
                     val sortedContactList = currentUiState.data.sortedBy { it.name }
-                    _uiState.value = UiState.Success(sortedContactList)
+                    uiState.value = UiState.Success(sortedContactList)
                 }
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(e.toString(), null)
+                uiState.value = UiState.Error(e.toString(), null)
             }
         }
     }
@@ -38,13 +38,13 @@ class ContactListViewModel(private val apiRepository: ApiRepository) : ViewModel
     fun sortContactListInZtoA() {
         viewModelScope.launch {
             try {
-                val currentUiState = uiState.value
+                val currentUiState = observeUiState.value
                 if (currentUiState is UiState.Success) {
                     val sortedContactList = currentUiState.data.sortedByDescending { it.name }
-                    _uiState.value = UiState.Success(sortedContactList)
+                    uiState.value = UiState.Success(sortedContactList)
                 }
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(e.toString(), null)
+                uiState.value = UiState.Error(e.toString(), null)
             }
         }
     }
@@ -52,28 +52,28 @@ class ContactListViewModel(private val apiRepository: ApiRepository) : ViewModel
     fun searchContactList(query: String) {
         viewModelScope.launch {
             try {
-                val currentUiState = uiState.value
+                val currentUiState = observeUiState.value
                 if (currentUiState is UiState.Success) {
                     val filteredList = if (query.isBlank()) {
-                        _originalData
+                        contactList
                     } else {
                         currentUiState.data.filter { it.name.contains(query, ignoreCase = true) }
                     }
-                    _uiState.value = UiState.Success(filteredList)
+                    uiState.value = UiState.Success(filteredList)
                 }
             } catch (e: Exception) {
-                _uiState.value = UiState.Error(e.toString(), null)
+                uiState.value = UiState.Error(e.toString(), null)
             }
         }
     }
 
-    private fun fetchContactList() {
+    fun fetchContactList() {
         viewModelScope.launch {
             apiRepository.getContactList().catch { e ->
-                _uiState.value = UiState.Error(e.toString(), null)
+                uiState.value = UiState.Error(e.toString(), null)
             }.collect {
-                _originalData = it
-                _uiState.value = UiState.Success(it)
+                contactList = it
+                uiState.value = UiState.Success(it)
             }
         }
     }
