@@ -9,14 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.ravinada.contact.R
 import com.ravinada.contact.databinding.FragmentContactListBinding
 import com.ravinada.contact.ui.base.BaseFragment
 import com.ravinada.contact.ui.base.UiState
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
@@ -46,7 +42,7 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Handle query text change here
+                newText?.let { viewModel.searchContactList(it) }
                 return true
             }
         })
@@ -55,10 +51,12 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_zToa -> {
+            R.id.action_aToz -> {
+                viewModel.sortContactListInAtoZ()
                 true
             }
-            R.id.action_aToz -> {
+            R.id.action_zToa -> {
+                viewModel.sortContactListInZtoA()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -67,7 +65,6 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupData(view)
         setupObserver()
     }
@@ -75,30 +72,27 @@ class ContactListFragment : BaseFragment<FragmentContactListBinding>() {
     private fun setupData(view: View) {
         val itemDetailFragmentContainer: View? = view.findViewById(R.id.item_detail_nav_container)
         with(binding) {
+            rootContactList.addTapToDismissBehaviour()
             adapter = ContactListAdapter(itemDetailFragmentContainer)
             recyclerView.adapter = adapter
         }
     }
 
     private fun setupObserver() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect {
-                    when (it) {
-                        is UiState.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            adapter.submitList(it.data)
-                            binding.recyclerView.visibility = View.VISIBLE
-                        }
-                        is UiState.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                            binding.recyclerView.visibility = View.GONE
-                        }
-                        is UiState.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            snackbar(binding.root, it.message.toString(), Toast.LENGTH_LONG)
-                        }
-                    }
+        viewModel.uiState.collectLatestRepeatOnStarted {
+            when (it) {
+                is UiState.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    adapter.submitList(it.data)
+                    binding.recyclerView.visibility = View.VISIBLE
+                }
+                is UiState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.recyclerView.visibility = View.GONE
+                }
+                is UiState.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    snackbar(binding.root, it.message.toString(), Toast.LENGTH_LONG)
                 }
             }
         }

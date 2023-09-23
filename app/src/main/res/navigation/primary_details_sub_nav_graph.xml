@@ -8,8 +8,5 @@
         android:id="@+id/contactItemDetailFragment"
         android:name="com.ravinada.contact.ui.contactDetail.ContactDetailFragment"
         tools:layout="@layout/fragment_contact_detail">
-        <argument
-            android:name="contactDetail"
-            app:argType="com.ravinada.contact.ui.contactDetail.ContactDetailUiModel" />
     </fragment>
 </navigation>

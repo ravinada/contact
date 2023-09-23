@@ -2,7 +2,6 @@ package com.ravinada.contact.ui.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
@@ -75,19 +73,6 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         setOnTouchListener { view, event ->
             interceptTouchEvent(view, event)
         }
-    }
-
-    /**
-     * Changes [TextInputLayout]'s end icon visibility
-     * @receiver [TextInputLayout]
-     * @param [hasFocus] True if [TextInputEditText] inside of [TextInputLayout] has focus
-     * param [text] [TextInputEditText]'s text
-     */
-    fun TextInputLayout.changeEndIconVisibility(
-        hasFocus: Boolean,
-        text: Editable?
-    ) {
-        isEndIconVisible = hasFocus && text?.isNotEmpty() == true
     }
 
     /**

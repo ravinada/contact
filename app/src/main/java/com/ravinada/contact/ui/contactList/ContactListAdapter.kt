@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ravinada.contact.R
 import com.ravinada.contact.data.api.response.Contact
 import com.ravinada.contact.databinding.ItemContactBinding
-import com.ravinada.contact.ui.contactDetail.ContactDetailUiModel
 import com.ravinada.contact.ui.contactList.ContactListFragment.Companion.CONTACT_DETAIL
 
 class ContactListAdapter(private val itemDetailFragmentContainer: View?) :
@@ -45,7 +44,7 @@ class ContactListAdapter(private val itemDetailFragmentContainer: View?) :
                 val bundle = Bundle()
                 bundle.putParcelable(
                     CONTACT_DETAIL,
-                    ContactDetailUiModel(dataModel.name)
+                    dataModel
                 )
                 root.setOnClickListener {
                     if (itemDetailFragmentContainer != null) {

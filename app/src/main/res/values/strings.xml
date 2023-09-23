@@ -6,4 +6,14 @@
     <string name="sort_by_z_a">Sort By Z-A</string>
     <string name="sort_by_a_z">Sort By A-Z</string>
     <string name="searchContact_hint">Search contact</string>
+    <string name="contactDetail_fullName_hint">Full Name</string>
+    <string name="contactDetail_username_hint">Username</string>
+    <string name="contactDetail_email_hint">Email</string>
+    <string name="contactDetail_phoneNumber_hint">Phone Number</string>
+    <string name="contactDetail_address_hint">Address</string>
+    <string name="contactDetail_website_hint">Website</string>
+    <string name="contactDetail_company_hint">Company</string>
+    <string name="contactDetail_addressFormat">%s, \n%s, \n%s</string>
+    <string name="contactDetail_companyFormat">%s, \n%s, \n%s</string>
+    <string name="cta_save">Save</string>
 </resources>

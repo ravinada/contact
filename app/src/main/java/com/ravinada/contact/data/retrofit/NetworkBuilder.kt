@@ -1,4 +1,4 @@
-package com.ravinada.contact.data.api.retrofit
+package com.ravinada.contact.data.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.ravinada.contact.BuildConfig

@@ -1,4 +1,4 @@
-package com.ravinada.contact.data.api.retrofit
+package com.ravinada.contact.data.retrofit
 
 /**
  * Wrapper around Coroutines that creates [CoResult]. In order to create [CoCompletable],

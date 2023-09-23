@@ -1,4 +1,4 @@
-package com.ravinada.contact.data.api.retrofit
+package com.ravinada.contact.data.retrofit
 
 /**
  * Copyright (C) 2018 Fernando Cejas Open Source Project

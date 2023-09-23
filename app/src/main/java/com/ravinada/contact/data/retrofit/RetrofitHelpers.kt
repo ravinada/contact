@@ -1,4 +1,4 @@
-package com.ravinada.contact.data.api.retrofit
+package com.ravinada.contact.data.retrofit
 
 import timber.log.Timber
 
